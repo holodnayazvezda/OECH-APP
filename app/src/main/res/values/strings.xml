@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">OECH APP FINAL</string>
+    <string name="OnboardingFirstTitle">Quick Delivery At Your Doorstep</string>
+    <string name="OnboardingFirstDescription">Enjoy quick pick-up and delivery to your destination</string>
+    <string name="OnboardingSecondTitle">Flexible Payment</string>
+    <string name="OnboardingSecondDescription">Different modes of payment either before and after delivery without stress</string>
+    <string name="OnboardingThirdTitle">Real-time Tracking</string>
+    <string name="OnboardingThirdDescription">Track your packages/items from the comfort of your home till final destination</string>
+    <string name="OnboardingButtonSkipText">Skip</string>
+    <string name="OnboardingButtonNextText">Next</string>
+    <string name="OnboardingButtonSignUpText">Sign Up</string>
+</resources>

@@ -4,9 +4,10 @@ package com.example.oechappfinal.data
 import android.content.Context
 import android.util.Log
 
+
 private const val SharedPreferenceName = "app_preferences"
-private const val IsStartup = "is_startup"
 private const val Password = "password"
+private const val IdOfOnboardingScreen = "id_of_onboarding_screen"
 
 class Storage(context: Context) {
     private val prefs = context.getSharedPreferences(
@@ -25,7 +26,7 @@ class Storage(context: Context) {
     }
 
     fun clear() {
-        prefs.edit().remove(IsStartup).apply()
+        prefs.edit().clear().apply()
     }
 
     var password: String?
@@ -39,12 +40,13 @@ class Storage(context: Context) {
             putString(Password, value)
         }
 
-
-    var isStartup: String?
+    var idOfOnboardingScreen: Int
         get() {
-            return getString(IsStartup)
+            val screenId = getString(IdOfOnboardingScreen)
+            return screenId?.toInt() ?: 0
         }
+
         set(value) {
-            putString(IsStartup, value)
+            putString(IdOfOnboardingScreen, value.toString())
         }
 }

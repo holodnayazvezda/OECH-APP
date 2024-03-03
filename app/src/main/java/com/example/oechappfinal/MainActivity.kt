@@ -1,17 +1,8 @@
 package com.example.oechappfinal
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
 import com.example.oechappfinal.data.ApplicationContext
 import com.example.oechappfinal.data.Storage
 import com.example.oechappfinal.ui.navigation.NavGraph
@@ -28,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             OECHAPPFINALTheme {
                 NavGraph(
-                    if (storage.isStartup == null) {
+                    if (storage.idOfOnboardingScreen <= 2) {
                         "OnboardingFirstScreen"
                     } else {
                         "HolderScreen"

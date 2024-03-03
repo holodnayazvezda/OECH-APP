@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
@@ -96,7 +95,7 @@ fun OnboardingFirstScreen(
                     ) {
                         OutlinedButton(
                             onClick = {
-                                vm.setStartupTrue()
+                                vm.setIdOfOnboardingScreen(3)
                                 vm.getOnboardItems().clear()
                                 navController.navigate("HolderScreen")
                             },
@@ -113,6 +112,7 @@ fun OnboardingFirstScreen(
                         Button(
                             onClick = {
                                 vm.getOnboardItems().poll()
+                                vm.setIdOfOnboardingScreen(3 - vm.getOnboardItems().size)
                                 navController.navigate("OnboardingFirstScreen")
                             },
                             shape = RoundedCornerShape(5.dp),
@@ -128,7 +128,7 @@ fun OnboardingFirstScreen(
                 } else {
                     Button(
                         onClick = {
-                            vm.setStartupTrue()
+                            vm.setIdOfOnboardingScreen(3)
                             vm.getOnboardItems().clear()
                             navController.navigate("HolderScreen")
                         },

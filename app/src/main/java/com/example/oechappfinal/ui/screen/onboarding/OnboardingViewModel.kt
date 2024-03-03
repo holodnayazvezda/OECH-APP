@@ -19,34 +19,64 @@ class OnboardingViewModel(): ViewModel() {
         return onboardings
     }
 
-    fun setStartupTrue() {
+    fun getIdOfOnboardingScreen(): Int {
         val storage = Storage(ApplicationContext.getContext())
-        storage.isStartup = "true"
+        return storage.idOfOnboardingScreen
+    }
+
+    fun setIdOfOnboardingScreen(screenId: Int) {
+        val storage = Storage(ApplicationContext.getContext())
+        storage.idOfOnboardingScreen = screenId
     }
 }
 
 data class OnboardingState(
-    val onboardings: Queue<Onboarding> = if (Storage(ApplicationContext.getContext()).isStartup != null) {
-        LinkedList()
-    } else {
-        LinkedList(
-            listOf(
-                Onboarding(
-                    imageResId = R.drawable.onboarding_screen_first_image,
-                    titleTextResId = R.string.OnboardingFirstTitle,
-                    descriptionTextResId = R.string.OnboardingFirstDescription,
-                ),
-                Onboarding(
-                    imageResId = R.drawable.onboarding_screen_second_image,
-                    titleTextResId = R.string.OnboardingSecondTitle,
-                    descriptionTextResId = R.string.OnboardingSecondDescription,
-                ),
-                Onboarding(
-                    imageResId = R.drawable.onboarding_screen_third_image,
-                    titleTextResId = R.string.OnboardingThirdTitle,
-                    descriptionTextResId = R.string.OnboardingThirdDescription,
+    val  onboardings: Queue<Onboarding> = if (Storage(ApplicationContext.getContext()).idOfOnboardingScreen == 0) {
+            LinkedList(
+                listOf(
+                    Onboarding(
+                        imageResId = R.drawable.onboarding_screen_first_image,
+                        titleTextResId = R.string.OnboardingFirstTitle,
+                        descriptionTextResId = R.string.OnboardingFirstDescription,
+                    ),
+                    Onboarding(
+                        imageResId = R.drawable.onboarding_screen_second_image,
+                        titleTextResId = R.string.OnboardingSecondTitle,
+                        descriptionTextResId = R.string.OnboardingSecondDescription,
+                    ),
+                    Onboarding(
+                        imageResId = R.drawable.onboarding_screen_third_image,
+                        titleTextResId = R.string.OnboardingThirdTitle,
+                        descriptionTextResId = R.string.OnboardingThirdDescription,
+                    )
                 )
             )
-        )
-    }
+        } else if (Storage(ApplicationContext.getContext()).idOfOnboardingScreen == 1) {
+            LinkedList(
+                listOf(
+                    Onboarding(
+                        imageResId = R.drawable.onboarding_screen_second_image,
+                        titleTextResId = R.string.OnboardingSecondTitle,
+                        descriptionTextResId = R.string.OnboardingSecondDescription,
+                    ),
+                    Onboarding(
+                        imageResId = R.drawable.onboarding_screen_third_image,
+                        titleTextResId = R.string.OnboardingThirdTitle,
+                        descriptionTextResId = R.string.OnboardingThirdDescription,
+                    )
+                )
+            )
+        } else if (Storage(ApplicationContext.getContext()).idOfOnboardingScreen == 2) {
+            LinkedList(
+                listOf(
+                    Onboarding(
+                        imageResId = R.drawable.onboarding_screen_third_image,
+                        titleTextResId = R.string.OnboardingThirdTitle,
+                        descriptionTextResId = R.string.OnboardingThirdDescription,
+                    )
+                )
+            )
+        } else {
+            LinkedList()
+        }
 )

@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.oechappfinal.R
-import com.example.oechappfinal.domain.models.Onboarding
+import com.example.oechappfinal.data.model.Onboarding
 import com.example.oechappfinal.ui.theme.AppBlue
 import com.example.oechappfinal.ui.theme.GreyColor30
 import com.example.oechappfinal.ui.theme.GreyColor70

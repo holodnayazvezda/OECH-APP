@@ -4,7 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.oechappfinal.domain.usecases.SignUpUseCase
+import androidx.lifecycle.viewModelScope
+import com.example.oechappfinal.data.model.SignUp.SignUpRequestModel
+import com.example.oechappfinal.data.network.Api
+import com.example.oechappfinal.domain.usecase.SignUpUseCase
+import kotlinx.coroutines.launch
 
 class SignUpViewModel(private val signUpUseCase: SignUpUseCase) : ViewModel() {
     var signUpData by mutableStateOf(SignUpData())
@@ -49,17 +53,37 @@ class SignUpViewModel(private val signUpUseCase: SignUpUseCase) : ViewModel() {
         signUpData = signUpData.copy(buttonEnabled = signUpUseCase.checkButtonEnabled(signUpData))
     }
 
-    private fun checkButtonEnabled() {
-        val checkResult =
-            signUpData.fullName.isNotEmpty() &&
-            signUpData.phoneNumber.isNotEmpty() &&
-            signUpData.emailAddress.isNotEmpty() &&
-            !signUpData.errorEmailAddress &&
-            signUpData.password.isNotEmpty() &&
-            signUpData.confirmPassword.isNotEmpty() &&
-            !signUpData.errorConfirmPassword &&
-            signUpData.agreeWithTerms
-        signUpData = signUpData.copy(buttonEnabled = checkResult)
+    fun updateError(error: String?) {
+        signUpData = signUpData.copy(error = error)
+    }
+
+    fun signUp() {
+        viewModelScope.launch {
+            signUpData = signUpData.copy(isLoading = true)
+            try {
+                Api.RetrofitService.SignUp(
+                    SignUpRequestModel(
+                        name = signUpData.fullName,
+                        phone = signUpData.phoneNumber,
+                        email = signUpData.emailAddress,
+                        password = signUpData.password
+                    )
+                )
+                updateError("success")
+                signUpData = signUpData.copy(
+                    isLoading = false
+                )
+            } catch (e: Exception) {
+                if (e.message != null) {
+                    updateError(if (e.message!!.lowercase().contains("unable to resolve")) {"No internet"} else {e.message})
+                } else {
+                    updateError("Unknown error")
+                }
+                signUpData = signUpData.copy(
+                    isLoading = false
+                )
+            }
+        }
     }
 }
 

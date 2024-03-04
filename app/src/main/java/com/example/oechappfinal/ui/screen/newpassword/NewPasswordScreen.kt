@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.oechappfinal.R
-import com.example.oechappfinal.domain.usecases.NewPasswordUseCase
+import com.example.oechappfinal.domain.usecase.NewPasswordUseCase
 import com.example.oechappfinal.ui.theme.AppBlue
 import com.example.oechappfinal.ui.theme.ErrorRed
 import com.example.oechappfinal.ui.theme.GreyColor30

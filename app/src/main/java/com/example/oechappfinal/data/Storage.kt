@@ -2,12 +2,11 @@ package com.example.oechappfinal.data
 
 
 import android.content.Context
-import android.util.Log
 
 
 private const val SharedPreferenceName = "app_preferences"
-private const val Password = "password"
 private const val IdOfOnboardingScreen = "id_of_onboarding_screen"
+private const val ValidCode = "valid_code"
 
 class Storage(context: Context) {
     private val prefs = context.getSharedPreferences(
@@ -15,11 +14,11 @@ class Storage(context: Context) {
         Context.MODE_PRIVATE
     )
 
-    private fun getString(key: String): String? {
+    fun getString(key: String): String? {
         return prefs.getString(key, null)
     }
 
-    private fun putString(key: String, value: String?) {
+    fun putString(key: String, value: String?) {
         prefs.edit()
             .putString(key, value)
             .apply()
@@ -29,16 +28,7 @@ class Storage(context: Context) {
         prefs.edit().clear().apply()
     }
 
-    var password: String?
-        get() {
-            val storedPassword = getString(Password)
-            Log.d("Storage", "Getting password: $storedPassword")
-            return storedPassword
-        }
-        set(value) {
-            Log.d("Storage", "Setting password: $value")
-            putString(Password, value)
-        }
+
 
     var idOfOnboardingScreen: Int
         get() {
@@ -48,5 +38,15 @@ class Storage(context: Context) {
 
         set(value) {
             putString(IdOfOnboardingScreen, value.toString())
+        }
+    // перенести в useCases
+    var validCode: Int
+        get() {
+            val validCode = getString(ValidCode)
+            return validCode?.toInt() ?: 0
+        }
+
+        set(value) {
+            putString(ValidCode, value.toString())
         }
 }

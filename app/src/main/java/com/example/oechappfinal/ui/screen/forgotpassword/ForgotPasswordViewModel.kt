@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.oechappfinal.domain.usecases.ForgotPasswordUseCase
+import com.example.oechappfinal.domain.usecase.ForgotPasswordUseCase
 
 class ForgotPasswordViewModel(private val forgotPasswordUseCase: ForgotPasswordUseCase) : ViewModel() {
     var forgotPasswordData by mutableStateOf(ForgotPasswordData())

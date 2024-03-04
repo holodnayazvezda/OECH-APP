@@ -2,9 +2,9 @@ package com.example.oechappfinal.ui.screen.onboarding
 
 import androidx.lifecycle.ViewModel
 import com.example.oechappfinal.R
-import com.example.oechappfinal.data.ApplicationContext
+import com.example.oechappfinal.data.application.ApplicationContext
 import com.example.oechappfinal.data.Storage
-import com.example.oechappfinal.domain.models.Onboarding
+import com.example.oechappfinal.data.model.Onboarding
 import java.util.LinkedList
 import java.util.Queue
 
@@ -31,7 +31,7 @@ class OnboardingViewModel(): ViewModel() {
 }
 
 data class OnboardingData(
-    val  onboardings: Queue<Onboarding> = if (Storage(ApplicationContext.getContext()).idOfOnboardingScreen == 0) {
+    val onboardings: Queue<Onboarding> = if (Storage(ApplicationContext.getContext()).idOfOnboardingScreen == 0) {
             LinkedList(
                 listOf(
                     Onboarding(

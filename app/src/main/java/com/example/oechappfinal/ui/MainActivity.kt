@@ -1,9 +1,9 @@
-package com.example.oechappfinal
+package com.example.oechappfinal.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.oechappfinal.data.ApplicationContext
+import com.example.oechappfinal.data.application.ApplicationContext
 import com.example.oechappfinal.data.Storage
 import com.example.oechappfinal.ui.navigation.NavGraph
 import com.example.oechappfinal.ui.screen.onboarding.OnboardingData

@@ -1,4 +1,4 @@
-package com.example.oechappfinal.domain.usecases
+package com.example.oechappfinal.domain.usecase
 
 import com.example.oechappfinal.ui.screen.signup.SignUpData
 

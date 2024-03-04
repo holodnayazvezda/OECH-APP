@@ -4,10 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.oechappfinal.domain.usecases.ForgotPasswordUseCase
-import com.example.oechappfinal.domain.usecases.LoginUseCase
-import com.example.oechappfinal.domain.usecases.NewPasswordUseCase
-import com.example.oechappfinal.domain.usecases.SignUpUseCase
+import com.example.oechappfinal.domain.usecase.ForgotPasswordUseCase
+import com.example.oechappfinal.domain.usecase.LoginUseCase
+import com.example.oechappfinal.domain.usecase.NewPasswordUseCase
+import com.example.oechappfinal.domain.usecase.OtpVerificationUsecase
+import com.example.oechappfinal.domain.usecase.SignUpUseCase
 import com.example.oechappfinal.ui.screen.forgotpassword.ForgotPasswordScreen
 import com.example.oechappfinal.ui.screen.forgotpassword.ForgotPasswordViewModel
 import com.example.oechappfinal.ui.screen.holder.HolderScreen
@@ -20,6 +21,7 @@ import com.example.oechappfinal.ui.screen.onboarding.OnboardingData
 import com.example.oechappfinal.ui.screen.onboarding.OnboardingFirstScreen
 import com.example.oechappfinal.ui.screen.onboarding.OnboardingViewModel
 import com.example.oechappfinal.ui.screen.otpverification.OtpVerificationScreen
+import com.example.oechappfinal.ui.screen.otpverification.OtpVerificationViewModel
 import com.example.oechappfinal.ui.screen.signup.SignUpScreen
 import com.example.oechappfinal.ui.screen.signup.SignUpViewModel
 
@@ -48,7 +50,8 @@ fun NavGraph(
         composable("LoginScreen") {
             LoginScreen(
                 vm = LoginViewModel(LoginUseCase()),
-                navController = navController
+                navController = navController,
+                loginUseCase = LoginUseCase()
             )
         }
         composable("ForgotPasswordScreen") {
@@ -58,7 +61,10 @@ fun NavGraph(
             )
         }
         composable("OtpVerificationScreen") {
-            OtpVerificationScreen(navController)
+            OtpVerificationScreen(
+                OtpVerificationViewModel(OtpVerificationUsecase()),
+                navController
+            )
         }
         composable("NewPasswordScreen") {
             NewPasswordScreen(

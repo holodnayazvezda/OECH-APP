@@ -1,4 +1,4 @@
-package com.example.oechappfinal.domain.modules
+package com.example.oechappfinal.domain.models
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

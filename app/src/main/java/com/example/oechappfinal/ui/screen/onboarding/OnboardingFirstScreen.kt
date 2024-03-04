@@ -36,16 +36,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.oechappfinal.R
-import com.example.oechappfinal.domain.modules.Onboarding
+import com.example.oechappfinal.domain.models.Onboarding
 import com.example.oechappfinal.ui.theme.AppBlue
-import com.example.oechappfinal.ui.theme.OnboardingTextColor30
-import com.example.oechappfinal.ui.theme.OnboardingTextColor70
+import com.example.oechappfinal.ui.theme.GreyColor30
+import com.example.oechappfinal.ui.theme.GreyColor70
 
 @Composable
 fun OnboardingFirstScreen(
     vm: OnboardingViewModel,
     navController: NavController,
-    state: OnboardingState
+    state: OnboardingData
 ) {
 
     vm.setOnboardItems(state.onboardings)
@@ -82,7 +82,7 @@ fun OnboardingFirstScreen(
                     text = stringResource(id = data.descriptionTextResId),
                     textAlign = TextAlign.Center,
                     fontSize = 15.sp,
-                    color = OnboardingTextColor30,
+                    color = GreyColor30,
                     modifier = if (vm.getOnboardItems().size != 1) {Modifier.padding(start=40.dp, end = 40.dp)} else {Modifier.padding(start=20.dp, end = 20.dp)}
                 )
                 Spacer(modifier = Modifier.padding(30.dp))
@@ -137,7 +137,7 @@ fun OnboardingFirstScreen(
                         modifier = Modifier.size(width = 320.dp, height = 50.dp)
                     ) {
                         Text(
-                            text = stringResource(id = R.string.OnboardingButtonSignUpText),
+                            text = stringResource(id = R.string.SignUpText),
                             fontWeight = FontWeight.Bold
                         )
                     }
@@ -151,7 +151,7 @@ fun OnboardingFirstScreen(
                     Text(
                         text = signInText,
                         fontSize = 13.sp,
-                        color = OnboardingTextColor70,
+                        color = GreyColor70,
                         modifier = Modifier.clickable {
                             navController.navigate("HolderScreen")
                         }
@@ -168,6 +168,6 @@ private fun OnboardingFirstScreenPreview() {
     OnboardingFirstScreen(
         vm = OnboardingViewModel(),
         navController = rememberNavController(),
-        state = OnboardingState()
+        state = OnboardingData()
     )
 }

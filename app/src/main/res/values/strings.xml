@@ -8,5 +8,12 @@
     <string name="OnboardingThirdDescription">Track your packages/items from the comfort of your home till final destination</string>
     <string name="OnboardingButtonSkipText">Skip</string>
     <string name="OnboardingButtonNextText">Next</string>
-    <string name="OnboardingButtonSignUpText">Sign Up</string>
+    <string name="SignUpText">Sign Up</string>
+    <string name="SignUpTitle">Create an account</string>
+    <string name="SignUpDescription">Complete the sign up process to get started</string>
+    <string name="FullNameText">Full name</string>
+    <string name="PhoneNumberText">Phone Number</string>
+    <string name="EmailAddressText">Email Address</string>
+    <string name="PasswordText">Password</string>
+    <string name="ConfirmPassword">Confirm Password</string>
 </resources>

@@ -2,13 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="OnboardingFirstScreenPreview">
+      <entry key="ForgotPasswordScreenPreview">
         <State />
       </entry>
-      <entry key="OnboardingSecondScreenPreview">
+      <entry key="HomeScreenPrev">
         <State />
       </entry>
-      <entry key="OnboardingSecondThirdPreview">
+      <entry key="LoginScreenPreview">
+        <State />
+      </entry>
+      <entry key="NewPasswordScreenPreview">
+        <State />
+      </entry>
+      <entry key="OtpVerificationScreenPreview">
         <State />
       </entry>
       <entry key="app">

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.oechappfinal.R
 import com.example.oechappfinal.data.ApplicationContext
 import com.example.oechappfinal.data.Storage
-import com.example.oechappfinal.domain.modules.Onboarding
+import com.example.oechappfinal.domain.models.Onboarding
 import java.util.LinkedList
 import java.util.Queue
 
@@ -30,7 +30,7 @@ class OnboardingViewModel(): ViewModel() {
     }
 }
 
-data class OnboardingState(
+data class OnboardingData(
     val  onboardings: Queue<Onboarding> = if (Storage(ApplicationContext.getContext()).idOfOnboardingScreen == 0) {
             LinkedList(
                 listOf(

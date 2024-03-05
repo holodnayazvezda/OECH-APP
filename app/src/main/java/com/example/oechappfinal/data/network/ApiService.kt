@@ -1,11 +1,14 @@
 package com.example.oechappfinal.data.network
 
+import com.example.oechappfinal.data.model.Balance.BalanceResponseModel
 import com.example.oechappfinal.data.model.GetValidCode.GetValidCodeRequestModel
 import com.example.oechappfinal.data.model.GetValidCode.GetValidCodeResponseModel
 import com.example.oechappfinal.data.model.SignIn.SignInRequestModel
 import com.example.oechappfinal.data.model.SignUp.SignUpRequestModel
 import com.example.oechappfinal.data.model.SignUp.SignUpResponseModel
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -17,4 +20,7 @@ interface ApiService {
 
     @POST("getValidCode")
     suspend fun getValidCode(@Body getValidCodeRequestModel: GetValidCodeRequestModel): GetValidCodeResponseModel
+
+    @GET("getBalance")
+    suspend fun getBalance(@Header("token") token: String): BalanceResponseModel
 }
